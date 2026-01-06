@@ -24,6 +24,8 @@ export default function CategoryModal({ category, onClose }: CategoryModalProps)
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
+    console.log("API_BASE =", API_BASE);
+
     useEffect(() => {
         if (category) {
             setName(category.name);
