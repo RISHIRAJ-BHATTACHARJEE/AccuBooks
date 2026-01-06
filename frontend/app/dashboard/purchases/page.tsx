@@ -26,7 +26,7 @@ export default function PurchasesPage() {
 
     const fetchPurchases = async () => {
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/purchases`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/purchases`, {
                 headers: { 'Authorization': `Bearer ${session?.access_token}` }
             });
             const data = await res.json();
@@ -47,7 +47,7 @@ export default function PurchasesPage() {
         setDeleteLoading(true);
 
         try {
-            await fetch(`${process.env.NEXT_PUBLIC_API_URL}/purchases/${deleteId}`, {
+            await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/purchases/${deleteId}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${session?.access_token}` }
             });

@@ -26,7 +26,7 @@ export default function IncomePage() {
 
     const fetchIncomes = async () => {
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/income`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/income`, {
                 headers: { 'Authorization': `Bearer ${session?.access_token}` }
             });
             const data = await res.json();
@@ -47,7 +47,7 @@ export default function IncomePage() {
         setDeleteLoading(true);
 
         try {
-            await fetch(`${process.env.NEXT_PUBLIC_API_URL}/income/${deleteId}`, {
+            await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/income/${deleteId}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${session?.access_token}` }
             });

@@ -32,7 +32,7 @@ export default function AnalyticsPage() {
     const fetchAnalytics = async () => {
         try {
             // Fetch category breakdown
-            const categoryRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/analytics/by-category`, {
+            const categoryRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/analytics/by-category`, {
                 headers: { 'Authorization': `Bearer ${session?.access_token}` }
             });
             const categoryData = await categoryRes.json();
@@ -40,7 +40,7 @@ export default function AnalyticsPage() {
             setPurchasesByCategory(categoryData.purchasesByCategory || []);
 
             // Fetch trends
-            const trendsRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/analytics/trends`, {
+            const trendsRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/analytics/trends`, {
                 headers: { 'Authorization': `Bearer ${session?.access_token}` }
             });
             const trendsData = await trendsRes.json();

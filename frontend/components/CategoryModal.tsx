@@ -38,8 +38,8 @@ export default function CategoryModal({ category, onClose }: CategoryModalProps)
 
         try {
             const url = category
-                ? `${process.env.NEXT_PUBLIC_API_URL}/categories/${category.id}`
-                : `${process.env.NEXT_PUBLIC_API_URL}/categories`;
+                ? `${process.env.NEXT_PUBLIC_API_URL}/api/categories/${category.id}`
+                : `${process.env.NEXT_PUBLIC_API_URL}/api/categories`;
 
             const method = category ? 'PUT' : 'POST';
 

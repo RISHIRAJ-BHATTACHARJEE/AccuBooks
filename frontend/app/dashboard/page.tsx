@@ -24,7 +24,7 @@ export default function DashboardPage() {
 
     const fetchSummary = async () => {
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/analytics/summary`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/analytics/summary`, {
                 headers: { 'Authorization': `Bearer ${session?.access_token}` }
             });
             const data = await res.json();

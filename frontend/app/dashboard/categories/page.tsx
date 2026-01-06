@@ -26,7 +26,7 @@ export default function CategoriesPage() {
 
     const fetchCategories = async () => {
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/categories`, {
                 headers: { 'Authorization': `Bearer ${session?.access_token}` }
             });
             const data = await res.json();
@@ -47,7 +47,7 @@ export default function CategoriesPage() {
         setDeleteLoading(true);
 
         try {
-            await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories/${deleteId}`, {
+            await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/categories/${deleteId}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${session?.access_token}` }
             });

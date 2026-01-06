@@ -32,7 +32,7 @@ export default function IncomeModal({ income, onClose }: IncomeModalProps) {
 
     const fetchCategories = async () => {
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/categories`, {
                 headers: { 'Authorization': `Bearer ${session?.access_token}` }
             });
             const data = await res.json();
@@ -49,8 +49,8 @@ export default function IncomeModal({ income, onClose }: IncomeModalProps) {
 
         try {
             const url = income
-                ? `${process.env.NEXT_PUBLIC_API_URL}/income/${income.id}`
-                : `${process.env.NEXT_PUBLIC_API_URL}/income`;
+                ? `${process.env.NEXT_PUBLIC_API_URL}/api/income/${income.id}`
+                : `${process.env.NEXT_PUBLIC_API_URL}/api/income`;
 
             const method = income ? 'PUT' : 'POST';
 

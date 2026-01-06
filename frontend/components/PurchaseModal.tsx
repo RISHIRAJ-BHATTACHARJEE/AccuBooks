@@ -34,7 +34,7 @@ export default function PurchaseModal({ purchase, onClose }: PurchaseModalProps)
 
     const fetchCategories = async () => {
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/categories`, {
                 headers: { 'Authorization': `Bearer ${session?.access_token}` }
             });
             const data = await res.json();
@@ -51,8 +51,8 @@ export default function PurchaseModal({ purchase, onClose }: PurchaseModalProps)
 
         try {
             const url = purchase
-                ? `${process.env.NEXT_PUBLIC_API_URL}/purchases/${purchase.id}`
-                : `${process.env.NEXT_PUBLIC_API_URL}/purchases`;
+                ? `${process.env.NEXT_PUBLIC_API_URL}/api/purchases/${purchase.id}`
+                : `${process.env.NEXT_PUBLIC_API_URL}/api/purchases`;
 
             const method = purchase ? 'PUT' : 'POST';
 
