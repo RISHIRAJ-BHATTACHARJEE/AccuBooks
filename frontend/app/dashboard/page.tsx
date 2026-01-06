@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { TrendingUp, TrendingDown, DollarSign, Plus } from 'lucide-react';
 import Link from 'next/link';
+import API_BASE from '../lib/api';
 
 interface FinancialSummary {
     totalIncome: number;
@@ -24,7 +25,7 @@ export default function DashboardPage() {
 
     const fetchSummary = async () => {
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/analytics/summary`, {
+            const res = await fetch(`${API_BASE}/analytics/summary`, {
                 headers: { 'Authorization': `Bearer ${session?.access_token}` }
             });
             const data = await res.json();

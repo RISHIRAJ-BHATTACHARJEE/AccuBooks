@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { X } from 'lucide-react';
 import type { Category } from '@/types';
+import API_BASE from '@/app/lib/api';
 
 interface CategoryModalProps {
     category?: Category | null;
@@ -38,8 +39,8 @@ export default function CategoryModal({ category, onClose }: CategoryModalProps)
 
         try {
             const url = category
-                ? `${process.env.NEXT_PUBLIC_API_URL}/api/categories/${category.id}`
-                : `${process.env.NEXT_PUBLIC_API_URL}/api/categories`;
+                ? `${API_BASE}/categories/${category.id}`
+                : `${API_BASE}/categories`;
 
             const method = category ? 'PUT' : 'POST';
 

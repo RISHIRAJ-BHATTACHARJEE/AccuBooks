@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { X } from 'lucide-react';
 import type { Purchase, Category } from '@/types';
+import API_BASE from '@/app/lib/api';
 
 interface PurchaseModalProps {
     purchase?: Purchase | null;
@@ -34,7 +35,7 @@ export default function PurchaseModal({ purchase, onClose }: PurchaseModalProps)
 
     const fetchCategories = async () => {
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/categories`, {
+            const res = await fetch(`${API_BASE}/categories`, {
                 headers: { 'Authorization': `Bearer ${session?.access_token}` }
             });
             const data = await res.json();
@@ -51,8 +52,8 @@ export default function PurchaseModal({ purchase, onClose }: PurchaseModalProps)
 
         try {
             const url = purchase
-                ? `${process.env.NEXT_PUBLIC_API_URL}/api/purchases/${purchase.id}`
-                : `${process.env.NEXT_PUBLIC_API_URL}/api/purchases`;
+                ? `${API_BASE}/purchases/${purchase.id}`
+                : `${API_BASE}/purchases`;
 
             const method = purchase ? 'PUT' : 'POST';
 

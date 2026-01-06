@@ -8,6 +8,7 @@ import ConfirmModal from '@/components/ConfirmModal';
 import type { Purchase } from '@/types';
 import { toast } from 'react-hot-toast';
 import { format } from 'date-fns';
+import API_BASE from '@/app/lib/api';
 
 export default function PurchasesPage() {
     const { session } = useAuth();
@@ -26,7 +27,7 @@ export default function PurchasesPage() {
 
     const fetchPurchases = async () => {
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/purchases`, {
+            const res = await fetch(`${API_BASE}/purchases`, {
                 headers: { 'Authorization': `Bearer ${session?.access_token}` }
             });
             const data = await res.json();
@@ -47,7 +48,7 @@ export default function PurchasesPage() {
         setDeleteLoading(true);
 
         try {
-            await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/purchases/${deleteId}`, {
+            await fetch(`${API_BASE}/purchases/${deleteId}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${session?.access_token}` }
             });

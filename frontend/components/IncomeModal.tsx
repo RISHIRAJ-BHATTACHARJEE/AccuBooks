@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { X } from 'lucide-react';
 import type { Income, Category } from '@/types';
+import API_BASE from '@/app/lib/api';
 
 interface IncomeModalProps {
     income?: Income | null;
@@ -32,7 +33,7 @@ export default function IncomeModal({ income, onClose }: IncomeModalProps) {
 
     const fetchCategories = async () => {
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/categories`, {
+            const res = await fetch(`${API_BASE}/categories`, {
                 headers: { 'Authorization': `Bearer ${session?.access_token}` }
             });
             const data = await res.json();
@@ -49,8 +50,8 @@ export default function IncomeModal({ income, onClose }: IncomeModalProps) {
 
         try {
             const url = income
-                ? `${process.env.NEXT_PUBLIC_API_URL}/api/income/${income.id}`
-                : `${process.env.NEXT_PUBLIC_API_URL}/api/income`;
+                ? `${API_BASE}/income/${income.id}`
+                : `${API_BASE}/income`;
 
             const method = income ? 'PUT' : 'POST';
 
