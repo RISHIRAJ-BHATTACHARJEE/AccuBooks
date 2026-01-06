@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-    origin: process.env.FRONTEND_URL || 'https://accu-books-vn4i.vercel.app/',
+    origin: process.env.FRONTEND_URL || 'https://accu-books-vn4i.vercel.app',
     credentials: true
 }));
 app.use(express.json());
